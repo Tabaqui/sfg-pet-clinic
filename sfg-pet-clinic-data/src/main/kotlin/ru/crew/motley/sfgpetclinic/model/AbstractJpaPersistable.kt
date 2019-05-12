@@ -8,7 +8,7 @@ import javax.persistence.Id
 import javax.persistence.MappedSuperclass
 
 @MappedSuperclass
-abstract class AbstractJpaPersistable<T : Serializable> {
+abstract class AbstractJpaPersistable<T : Serializable> : Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
