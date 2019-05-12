@@ -1,6 +1,3 @@
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-    }
-}
 rootProject.name = 'sfg-pet-clinic'
+include 'sfg-pet-clinic-data'
+include 'sfg-pet-clinic-web'
