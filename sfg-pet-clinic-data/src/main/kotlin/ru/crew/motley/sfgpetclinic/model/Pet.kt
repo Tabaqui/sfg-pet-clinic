@@ -6,4 +6,4 @@ class Pet(
         val petType: PetType,
         val owner: Owner,
         val birthDate: LocalDate
-)
+): AbstractJpaPersistable<Long>()
