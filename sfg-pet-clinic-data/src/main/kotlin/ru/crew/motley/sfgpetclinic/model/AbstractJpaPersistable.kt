@@ -14,6 +14,9 @@ abstract class AbstractJpaPersistable<T : Serializable> : Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private var id: T? = null
 
+    fun setId(id: T) {
+        this.id = id
+    }
     fun getId() = id
 
     override fun equals(other: Any?): Boolean {

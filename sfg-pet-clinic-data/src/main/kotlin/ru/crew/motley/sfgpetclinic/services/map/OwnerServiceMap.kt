@@ -7,8 +7,6 @@ import ru.crew.motley.sfgpetclinic.services.OwnerService
 @Service
 class OwnerServiceMap : AbstractMapService<Owner, Long>(), OwnerService {
 
-    override fun save(entity: Owner) = super.save(entity.getId()!!, entity)
-
     override fun findByLastName(lastName: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
