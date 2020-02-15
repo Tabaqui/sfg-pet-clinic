@@ -6,7 +6,6 @@ import org.springframework.boot.runApplication
 
 
 @SpringBootApplication(exclude = [GsonAutoConfiguration::class])
-//@SpringBootApplication(scanBasePackages = ["ru.crew.motley.sfgpetclinic"])
 class SfgPetClinicApplication
 
 fun main(args: Array<String>) {
