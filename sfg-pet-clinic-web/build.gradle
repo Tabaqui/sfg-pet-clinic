@@ -10,8 +10,8 @@ dependencies {
     implementation 'ro.isdc.wro4j:wro4j-extensions:1.9.0'
 
     implementation 'org.webjars:webjars-locator-core'
-    implementation 'org.webjars:jquery:3.4.1'
-    implementation 'org.webjars:jquery-ui:1.12.1'
+    implementation 'org.webjars:jquery:2.2.4'
+    implementation 'org.webjars:jquery-ui:1.11.4'
     implementation 'org.webjars:bootstrap:3.3.6'
 
 }
