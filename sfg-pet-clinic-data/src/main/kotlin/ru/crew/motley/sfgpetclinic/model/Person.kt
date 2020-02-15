@@ -1,3 +1,6 @@
 package ru.crew.motley.sfgpetclinic.model
 
-open class Person(val firstName: String, val lastName: String): AbstractJpaPersistable<Long>()
+open class Person(
+        var firstName: String,
+        var lastName: String
+) : AbstractJpaPersistable<Long>()
