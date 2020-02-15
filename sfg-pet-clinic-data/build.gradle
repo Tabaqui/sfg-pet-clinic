@@ -9,6 +9,7 @@ dependencies {
 }
 
 bootJar.enabled = false
+jar.enabled = true
 
 compileKotlin {
     kotlinOptions {

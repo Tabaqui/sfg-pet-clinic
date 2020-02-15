@@ -17,25 +17,25 @@ class DataLoader(
 
     @Throws(Exception::class)
     override fun run(vararg args: String?) {
-        val owner1 = Owner("Michael", "Weston")
-
-        ownerService.save(owner1)
-
-        val owner2 = Owner("Fiona", "Glenanne")
-
-        ownerService.save(owner2)
-
-        println("Loaded Owners...")
-
-        val vet1 = Vet("Sam", "Axe")
-
-        vetService.save(vet1)
-
-        val vet2 = Vet("Jessie", "Porter")
-
-        vetService.save(vet2)
-
-        println("Loaded Vets...")
+//        val owner1 = Owner("Michael", "Weston")
+//
+//        ownerService.save(owner1)
+//
+//        val owner2 = Owner("Fiona", "Glenanne")
+//
+//        ownerService.save(owner2)
+//
+//        println("Loaded Owners...")
+//
+//        val vet1 = Vet("Sam", "Axe")
+//
+//        vetService.save(vet1)
+//
+//        val vet2 = Vet("Jessie", "Porter")
+//
+//        vetService.save(vet2)
+//
+//        println("Loaded Vets...")
 
     }
 }

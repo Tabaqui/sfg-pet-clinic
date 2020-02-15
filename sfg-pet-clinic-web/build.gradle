@@ -5,6 +5,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'eu.michael-simons:wro4j-spring-boot-starter:0.5.1'
+    implementation 'ro.isdc.wro4j:wro4j-extensions:1.9.0'
+
+    implementation 'org.webjars:webjars-locator-core'
+    implementation 'org.webjars:jquery:3.4.1'
+    implementation 'org.webjars:jquery-ui:1.12.1'
+    implementation 'org.webjars:bootstrap:3.3.6'
+
 }
 
 compileKotlin {
