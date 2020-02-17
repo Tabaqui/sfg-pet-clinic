@@ -5,13 +5,13 @@ plugins {
 }
 
 allprojects {
-//    group = 'motley'
-//    version = '0.0.1-SNAPSHOT'
-//    sourceCompatibility = '1.8'
-
     repositories {
         mavenCentral()
     }
+}
+
+ext {
+    junit = '5.5.2'
 }
 
 subprojects {
@@ -30,8 +30,15 @@ subprojects {
         implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
         runtimeOnly 'org.springframework.boot:spring-boot-devtools'
         
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+        }
+        testImplementation "org.junit.jupiter:junit-jupiter-api:${junit}"
+        testImplementation "org.junit.jupiter:junit-jupiter-engine:${junit}"
+
     }
+
+
 }
 
 
@@ -39,20 +46,6 @@ dependencies {
 
 }
 
-//
-//compileKotlin {
-//    kotlinOptions {
-//        freeCompilerArgs = ['-Xjsr305=strict']
-//        jvmTarget = '1.8'
-//    }
-//}
-//
-//compileTestKotlin {
-//    kotlinOptions {
-//        freeCompilerArgs = ['-Xjsr305=strict']
-//        jvmTarget = '1.8'
-//    }
-//}
 
 bootJar.enabled = false
 
