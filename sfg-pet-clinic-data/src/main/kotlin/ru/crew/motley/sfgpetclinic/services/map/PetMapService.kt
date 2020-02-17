@@ -5,4 +5,4 @@ import ru.crew.motley.sfgpetclinic.model.Pet
 import ru.crew.motley.sfgpetclinic.services.PetService
 
 @Service
-class PetServiceMap : AbstractMapService<Pet, Long>(), PetService
+class PetMapService : AbstractMapService<Pet, Long>(), PetService

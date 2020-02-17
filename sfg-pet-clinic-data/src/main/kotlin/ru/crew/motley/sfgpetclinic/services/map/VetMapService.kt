@@ -6,7 +6,7 @@ import ru.crew.motley.sfgpetclinic.services.SpecialityService
 import ru.crew.motley.sfgpetclinic.services.VetService
 
 @Service
-class VetServiceMap(
+class VetMapService(
         private val specialityService: SpecialityService
 )
     : AbstractMapService<Vet, Long>(), VetService {

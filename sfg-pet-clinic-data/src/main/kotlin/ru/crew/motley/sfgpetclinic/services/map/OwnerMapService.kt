@@ -7,7 +7,7 @@ import ru.crew.motley.sfgpetclinic.services.PetService
 import ru.crew.motley.sfgpetclinic.services.PetTypeService
 
 @Service
-class OwnerServiceMap(
+class OwnerMapService(
         private val petTypeService: PetTypeService,
         private val petService: PetService
 ) : AbstractMapService<Owner, Long>(), OwnerService {
