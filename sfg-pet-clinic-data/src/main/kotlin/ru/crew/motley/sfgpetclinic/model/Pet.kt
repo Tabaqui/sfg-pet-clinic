@@ -3,7 +3,8 @@ package ru.crew.motley.sfgpetclinic.model
 import java.time.LocalDate
 
 class Pet(
-        val petType: PetType,
-        val owner: Owner,
-        val birthDate: LocalDate
+        var name: String,
+        var petType: PetType,
+        var owner: Owner,
+        var birthDate: LocalDate
 ): AbstractJpaPersistable<Long>()

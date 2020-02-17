@@ -9,6 +9,7 @@ import ru.crew.motley.sfgpetclinic.model.Vet
 import ru.crew.motley.sfgpetclinic.services.OwnerService
 import ru.crew.motley.sfgpetclinic.services.PetTypeService
 import ru.crew.motley.sfgpetclinic.services.VetService
+import java.time.LocalDate
 
 @Component
 class DataLoader(
@@ -26,10 +27,14 @@ class DataLoader(
         val cat = PetType("Cat")
         val savedCatPetType = petTypeService.save(cat)
 
-        val owner1 = Owner("Michael", "Weston")
+        val owner1 = Owner("Michael", "Weston", "123 Brickerel", "Miami", "1231231234")
+        val mikesPet = Pet("Rosco", savedDogPetType, owner1, LocalDate.now())
+        owner1.pets.add(mikesPet)
         ownerService.save(owner1)
 
-        val owner2 = Owner("Fiona", "Glenanne")
+        val owner2 = Owner("Fiona", "Glenanne", "123 Brickerel", "Miami", "1231231234")
+        val fionaCat = Pet("Just Cat", savedCatPetType, owner2, LocalDate.now())
+        owner2.pets.add(fionaCat)
         ownerService.save(owner2)
 
         println("Loaded Owners...")

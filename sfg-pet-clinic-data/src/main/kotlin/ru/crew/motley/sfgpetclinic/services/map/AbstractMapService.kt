@@ -10,7 +10,7 @@ abstract class AbstractMapService<T : AbstractJpaPersistable<ID>, ID : Long> {
 
     fun findById(id: ID): T? = map[id]
 
-    fun save(entity: T): T {
+    open fun save(entity: T): T {
 
         if (entity.getId() == null) {
             entity.setId(getNextId())
@@ -29,6 +29,9 @@ abstract class AbstractMapService<T : AbstractJpaPersistable<ID>, ID : Long> {
     }
 
     private fun getNextId(): ID {
-        return (map.keys.max() ?: 0L + 1L) as ID
+        return if (map.keys.isEmpty())
+            1L as ID
+        else
+            (map.keys.max() ?: 0L + 1L) as ID
     }
 }

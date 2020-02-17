@@ -6,5 +6,5 @@ class Owner(
         var address: String = "",
         var city: String = "",
         var telephone: String = "",
-        var pets: Set<Pet> = setOf())
+        var pets: MutableSet<Pet> = mutableSetOf())
     : Person(firstName, lastName)
