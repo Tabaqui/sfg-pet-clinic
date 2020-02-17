@@ -3,7 +3,7 @@ package ru.crew.motley.sfgpetclinic.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "owner")
+@Table(name = "owners")
 class Owner(
         firstName: String,
         lastName: String,

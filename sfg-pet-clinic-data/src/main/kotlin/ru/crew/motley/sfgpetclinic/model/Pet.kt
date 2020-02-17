@@ -4,7 +4,7 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-@Table(name = "pet")
+@Table(name = "pets")
 class Pet(
         @Column(name = "name")
         var name: String,
