@@ -15,5 +15,7 @@ class Pet(
         @JoinColumn(name = "owner_id")
         var owner: Owner,
         @Column(name = "birth_date")
-        var birthDate: LocalDate
+        var birthDate: LocalDate,
+        @OneToMany(cascade = [CascadeType.ALL], mappedBy = "pet")
+        var visits: MutableSet<Visit> = mutableSetOf()
 ) : AbstractJpaPersistable<Long>()
