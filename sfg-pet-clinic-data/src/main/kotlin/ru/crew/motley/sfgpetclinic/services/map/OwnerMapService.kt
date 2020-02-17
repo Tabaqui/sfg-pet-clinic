@@ -24,8 +24,8 @@ class OwnerMapService(
         return super.save(entity)
     }
 
-    override fun findByLastName(lastName: String): Owner {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun findByLastName(lastName: String): Owner? {
+        return findAll().firstOrNull { it.lastName.equals(lastName, true) }
     }
 
 }
