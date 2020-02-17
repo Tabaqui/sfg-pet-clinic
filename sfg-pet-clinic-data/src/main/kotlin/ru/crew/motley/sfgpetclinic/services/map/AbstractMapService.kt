@@ -32,6 +32,6 @@ abstract class AbstractMapService<T : AbstractJpaPersistable<ID>, ID : Long> {
         return if (map.keys.isEmpty())
             1L as ID
         else
-            (map.keys.max() ?: 0L + 1L) as ID
+            ((map.keys.max() ?: 0L) + 1L) as ID
     }
 }

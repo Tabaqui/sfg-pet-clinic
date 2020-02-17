@@ -3,5 +3,5 @@ package ru.crew.motley.sfgpetclinic.model
 class Vet(
         firstName: String,
         lastName: String,
-        var specialities: Set<Speciality> = setOf()
+        var specialities: MutableSet<Speciality> = mutableSetOf()
 ) : Person(firstName, lastName)

@@ -8,7 +8,7 @@ import ru.crew.motley.sfgpetclinic.services.VetService
 @Controller
 class VetController(private val vetsService: VetService) {
 
-    @RequestMapping(path = ["/vets", "/vets/index", "/vets/index.html"])
+    @RequestMapping(path = ["/vets", "/vets.html", "/vets/index", "/vets/index.html"])
     fun listVets(model: Model): String {
 
         model.addAttribute("vets", vetsService.findAll())
