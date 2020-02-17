@@ -11,13 +11,14 @@ import javax.persistence.MappedSuperclass
 abstract class AbstractJpaPersistable<T : Serializable> : Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private var id: T? = null
 
     fun setId(id: T) {
         this.id = id
     }
-    fun getId() = id
+
+    fun getId(): T? = id
 
     override fun equals(other: Any?): Boolean {
         other ?: return false
