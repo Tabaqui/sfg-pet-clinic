@@ -3,10 +3,7 @@ package ru.crew.motley.sfgpetclinic.bootstrap
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 import ru.crew.motley.sfgpetclinic.model.*
-import ru.crew.motley.sfgpetclinic.services.OwnerService
-import ru.crew.motley.sfgpetclinic.services.PetTypeService
-import ru.crew.motley.sfgpetclinic.services.SpecialityService
-import ru.crew.motley.sfgpetclinic.services.VetService
+import ru.crew.motley.sfgpetclinic.services.*
 import java.time.LocalDate
 
 @Component
@@ -14,7 +11,8 @@ class DataLoader(
         private val ownerService: OwnerService,
         private val vetService: VetService,
         private val petTypeService: PetTypeService,
-        private val specialityService: SpecialityService
+        private val specialityService: SpecialityService,
+        private val visitService: VisitService
 ) : CommandLineRunner {
 
     @Throws(Exception::class)
@@ -48,6 +46,9 @@ class DataLoader(
         val fionaCat = Pet("Just Cat", savedCatPetType, owner2, LocalDate.now())
         owner2.pets.add(fionaCat)
         ownerService.save(owner2)
+
+        val catVisit = Visit(LocalDate.now(), "Sneezy Kitty", fionaCat)
+        visitService.save(catVisit)
 
         println("Loaded Owners...")
 
