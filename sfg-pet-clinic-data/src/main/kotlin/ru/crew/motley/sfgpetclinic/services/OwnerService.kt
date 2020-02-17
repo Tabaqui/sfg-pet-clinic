@@ -4,6 +4,6 @@ import ru.crew.motley.sfgpetclinic.model.Owner
 
 interface OwnerService : CrudService<Owner, Long> {
 
-    fun findByLastName(lastName: String)
+    fun findByLastName(lastName: String): Owner
 
 }

@@ -5,4 +5,7 @@ import org.springframework.stereotype.Repository
 import ru.crew.motley.sfgpetclinic.model.Owner
 
 @Repository
-interface OwnerRepository : CrudRepository<Owner, Long>
+interface OwnerRepository : CrudRepository<Owner, Long> {
+
+    fun findByLastName(lastName: String): Owner
+}
