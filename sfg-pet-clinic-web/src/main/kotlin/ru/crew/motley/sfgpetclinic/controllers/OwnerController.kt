@@ -40,7 +40,7 @@ class OwnerController(private val ownerService: OwnerService) {
     fun processFindForm(owner: Owner?, result: BindingResult, model: Model): String {
 
         val results = if (owner?.lastName != null)
-            ownerService.findAllByLastNameLike(owner.lastName)
+            ownerService.findAllByLastNameLike("%${owner.lastName}%")
         else
             listOf()
 
