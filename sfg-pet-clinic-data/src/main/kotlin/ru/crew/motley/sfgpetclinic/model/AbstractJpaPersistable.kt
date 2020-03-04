@@ -20,6 +20,8 @@ abstract class AbstractJpaPersistable<T : Serializable> : Serializable {
 
     fun getId(): T? = id
 
+    fun isNew(): Boolean = id == null
+
     override fun equals(other: Any?): Boolean {
         other ?: return false
         if (this === other) return true

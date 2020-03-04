@@ -4,13 +4,11 @@ import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.validation.BindingResult
 import org.springframework.validation.DataBinder
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.InitBinder
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.ModelAndView
 import ru.crew.motley.sfgpetclinic.model.Owner
 import ru.crew.motley.sfgpetclinic.services.OwnerService
+import javax.validation.Valid
 
 @Controller
 class OwnerController(private val ownerService: OwnerService) {
@@ -64,4 +62,38 @@ class OwnerController(private val ownerService: OwnerService) {
         val owner = ownerService.findById(ownerId) ?: throw RuntimeException("Owner not found.")
         return ModelAndView("owners/ownerDetails").apply { addObject(owner) }
     }
+
+    @GetMapping("/owners/new")
+    fun initCreationForm(model: Model): String {
+        model.addAttribute("owner", Owner())
+        return "owners/createOrUpdateOwnerForm"
+    }
+
+    @PostMapping("/owners/new")
+    fun processCreationForm(@Valid owner: Owner, result: BindingResult): String {
+        return if (result.hasErrors())
+            "owners/createOrUpdateOwnerForm"
+        else {
+            val saved = ownerService.save(owner)
+            "redirect:/owners/${saved.getId()}"
+        }
+    }
+
+    @GetMapping("/owners/{ownerId}/edit")
+    fun initUpdateOwnerForm(@PathVariable("ownerId") ownerId: Long, model: Model): String {
+        model.addAttribute(ownerService.findById(ownerId) ?: throw NullPointerException())
+        return "owners/createOrUpdateOwnerForm"
+    }
+
+    @PostMapping("/owners/{ownerId}/edit")
+    fun processUpdateOwnerForm(@PathVariable("ownerId") ownerId: Long, @Valid owner: Owner, result: BindingResult): String {
+        return if (result.hasErrors())
+            "owners/createOrUpdateOwnerForm"
+        else {
+            owner.setId(ownerId)
+            val saved = ownerService.save(owner)
+            "redirect:/owners/${saved.getId()}"
+        }
+    }
+
 }
