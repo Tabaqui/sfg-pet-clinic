@@ -5,8 +5,8 @@ import javax.persistence.*
 @Entity
 @Table(name = "owners")
 class Owner(
-        firstName: String,
-        lastName: String,
+        firstName: String = "",
+        lastName: String = "",
         @Column(name = "address")
         var address: String = "",
         @Column(name = "city")

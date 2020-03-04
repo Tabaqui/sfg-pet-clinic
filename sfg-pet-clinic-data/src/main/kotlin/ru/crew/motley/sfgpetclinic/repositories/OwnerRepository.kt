@@ -8,4 +8,6 @@ import ru.crew.motley.sfgpetclinic.model.Owner
 interface OwnerRepository : CrudRepository<Owner, Long> {
 
     fun findByLastName(lastName: String): Owner
+
+    fun findAllByLastNameLike(lastName: String): List<Owner>
 }

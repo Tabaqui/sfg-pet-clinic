@@ -21,6 +21,10 @@ class OwnerSDJPAService(
         return ownerRepository.findByLastName(lastName)
     }
 
+    override fun findAllByLastNameLike(lastName: String): List<Owner> {
+        return ownerRepository.findAllByLastNameLike(lastName)
+    }
+
     override fun findAll(): Set<Owner> {
         return ownerRepository.findAll().toSet()
     }

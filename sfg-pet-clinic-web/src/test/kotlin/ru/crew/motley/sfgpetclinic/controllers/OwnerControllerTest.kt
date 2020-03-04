@@ -5,8 +5,6 @@ import org.hamcrest.core.IsNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentMatchers
-import org.mockito.ArgumentMatchers.*
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.*
@@ -41,31 +39,34 @@ internal class OwnerControllerTest {
     }
 
     @Test
-    fun listOwners() {
-        `when`(ownerService.findAll()).thenReturn(owners)
-        mockMvc.perform(get("/owners"))
-                .andExpect(status().isOk)
-                .andExpect(view().name("owners/index"))
-                .andExpect(model().attribute("owners", hasSize<Any>(2)))
-    }
-
-    @Test
-    fun listOwnersByIndex() {
-        `when`(ownerService.findAll()).thenReturn(owners)
-        mockMvc.perform(get("/owners/index"))
-                .andExpect(status().isOk)
-                .andExpect(view().name("owners/index"))
-                .andExpect(model().attribute("owners", hasSize<Any>(2)))
-    }
-
-
-    @Test
     fun findOwners() {
         mockMvc.perform(get("/owners/find"))
                 .andExpect(status().isOk)
-                .andExpect(view().name("notimplemented"))
+                .andExpect(view().name("owners/findOwners"))
+                .andExpect(model().attributeExists("owner"))
 
         verifyNoInteractions(ownerService)
+    }
+
+    @Test
+    fun processFindFormReturnMany() {
+        `when`(ownerService.findAllByLastNameLike(anyString())).thenReturn(owners.toList())
+
+        mockMvc.perform(get("/owners"))
+                .andExpect(status().isOk)
+                .andExpect(view().name("owners/ownersList"))
+                .andExpect(model().attribute("selections", hasSize<Any>(owners.size)))
+    }
+
+    @Test
+    fun processFindFormReturnOne() {
+        `when`(ownerService.findAllByLastNameLike(anyString()))
+                .thenReturn(listOf(Owner("", "").apply { setId(1L) }))
+
+        mockMvc.perform(get("/owners"))
+                .andExpect(status().is3xxRedirection)
+                .andExpect(view().name("redirect:/owners/1"))
+/*                .andExpect(model().attribute("owners", IsNull.notNullValue()))*/
     }
 
     @Test

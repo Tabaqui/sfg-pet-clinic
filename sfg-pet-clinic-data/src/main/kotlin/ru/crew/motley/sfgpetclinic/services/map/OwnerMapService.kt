@@ -28,4 +28,7 @@ class OwnerMapService(
         return findAll().firstOrNull { it.lastName.equals(lastName, true) }
     }
 
+    override fun findAllByLastNameLike(lastName: String): List<Owner> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }
