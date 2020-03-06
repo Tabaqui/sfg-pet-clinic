@@ -15,8 +15,8 @@ class OwnerMapService(
 ) : AbstractMapService<Owner, Long>(), OwnerService {
 
     override fun save(entity: Owner): Owner {
-        entity.pets.forEach {
-            it.petType = petTypeService.save(it.petType)
+        entity.pets?.forEach {
+            it.petType = it.petType?.let { petType ->  petTypeService.save(petType) }
             val savedPet = petService.save(it)
             it.setId(savedPet.getId()!!)
         }

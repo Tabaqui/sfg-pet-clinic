@@ -15,4 +15,13 @@ class Owner(
         var telephone: String = "",
         @OneToMany(cascade = [CascadeType.ALL], mappedBy = "owner")
         var pets: MutableSet<Pet> = mutableSetOf())
-    : Person(firstName, lastName)
+    : Person(firstName, lastName) {
+
+    fun getPet(name: String): Pet? {
+        return getPet(name, false)
+    }
+
+    fun getPet(name: String, ignoreNew: Boolean): Pet? {
+        return pets.filterNot { ignoreNew && it.isNew() }.find { it.name?.toLowerCase() == name.toLowerCase() }
+    }
+}

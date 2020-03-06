@@ -10,7 +10,7 @@ import ru.crew.motley.sfgpetclinic.services.VisitService
 class VisitMapService : AbstractMapService<Visit, Long>(), VisitService {
 
     override fun save(entity: Visit): Visit {
-        if (entity.pet.getId() == null || entity.pet.owner.getId() == null)
+        if (entity.pet.getId() == null || entity.pet.owner?.getId() == null)
             throw RuntimeException("Invalid Visit")
 
         return super.save(entity)
