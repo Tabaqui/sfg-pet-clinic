@@ -9,4 +9,6 @@ import javax.persistence.Table
 class PetType(
         @Column(name = "name")
         val name: String
-) : AbstractJpaPersistable<Long>()
+) : AbstractJpaPersistable<Long>() {
+        override fun toString(): String = this.name
+}

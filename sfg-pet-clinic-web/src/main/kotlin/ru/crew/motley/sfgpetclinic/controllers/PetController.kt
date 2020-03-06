@@ -40,7 +40,7 @@ class PetController(
 
     @GetMapping("/pets/new")
     fun initCreationForm(owner: Owner, model: Model): String {
-        val pet = Pet(owner = owner)
+        val pet = Pet(name = "test", owner = owner)
         owner.pets.add(pet)
         pet.owner = owner
         model.addAttribute("pet", pet)
