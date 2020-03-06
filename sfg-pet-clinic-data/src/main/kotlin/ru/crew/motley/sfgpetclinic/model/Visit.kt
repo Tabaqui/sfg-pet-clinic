@@ -9,7 +9,7 @@ class Visit(
         @Column(name = "date")
         var date: LocalDate,
         @Column(name = "description")
-        var description: String,
+        var description: String = "",
         @ManyToOne
         @JoinColumn(name = "pet_id")
         var pet: Pet
