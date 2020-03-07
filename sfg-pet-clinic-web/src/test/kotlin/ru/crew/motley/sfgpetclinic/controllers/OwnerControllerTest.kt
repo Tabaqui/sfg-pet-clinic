@@ -55,7 +55,8 @@ internal class OwnerControllerTest {
     fun processFindFormReturnMany() {
         `when`(ownerService.findAllByLastNameLike(anyString())).thenReturn(owners.toList())
 
-        mockMvc.perform(get("/owners"))
+        mockMvc.perform(get("/owners")
+                        .param("lastName", ""))
                 .andExpect(status().isOk)
                 .andExpect(view().name("owners/ownersList"))
                 .andExpect(model().attribute("selections", hasSize<Any>(owners.size)))
